@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, Eye, Star } from "lucide-react";
 
 const products = [
   {
+    id: "1",
     name: "Breed Dry Dog Food",
     price: 100,
     image: "/produtos/bolsa.png",
@@ -11,6 +13,7 @@ const products = [
     reviews: 35,
   },
   {
+    id: "2",
     name: "CANON EOS DSLR Camera",
     price: 360,
     image: "/produtos/cadeira.png",
@@ -18,6 +21,7 @@ const products = [
     reviews: 95,
   },
   {
+    id: "3",
     name: "ASUS FHD Gaming Laptop",
     price: 700,
     image: "/produtos/controle.png",
@@ -25,6 +29,7 @@ const products = [
     reviews: 325,
   },
   {
+    id: "4",
     name: "Curology Product Set",
     price: 500,
     image: "/produtos/cooler.png",
@@ -32,6 +37,7 @@ const products = [
     reviews: 145,
   },
   {
+    id: "5",
     name: "Kids Electric Car",
     price: 960,
     image: "/produtos/estante.png",
@@ -41,6 +47,7 @@ const products = [
     hasColors: true,
   },
   {
+    id: "6",
     name: "Jr. Zoom Soccer Cleats",
     price: 1160,
     image: "/produtos/jaqueta.png",
@@ -49,6 +56,7 @@ const products = [
     hasColors: true,
   },
   {
+    id: "7",
     name: "GP11 Shooter USB Gamepad",
     price: 660,
     image: "/produtos/jbl-boombox.png",
@@ -58,6 +66,7 @@ const products = [
     hasColors: true,
   },
   {
+    id: "8",
     name: "Quilted Satin Jacket",
     price: 660,
     image: "/produtos/monitor.png",
@@ -90,10 +99,11 @@ export function ExploreProducts() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {products.map((product, i) => (
-          <div
-            key={i}
-            className="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative group overflow-hidden hover:shadow-md transition"
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            href={`/produto/${product.id}`}
+            className="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative group overflow-hidden hover:shadow-md transition block"
           >
             <div className="absolute top-3 right-3 flex gap-2">
               <Heart
@@ -153,7 +163,7 @@ export function ExploreProducts() {
                 <span className="w-3 h-3 rounded-full bg-green-500 inline-block" />
               </div>
             )}
-          </div>
+          </Link>
         ))}
       </div>
 

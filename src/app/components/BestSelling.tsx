@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, Eye, Star } from "lucide-react";
 
 const products = [
   {
+    id: "1",
     name: "The north coat",
     price: 260,
     oldPrice: 360,
@@ -12,6 +14,7 @@ const products = [
     reviews: 65,
   },
   {
+    id: "2",
     name: "Gucci duffle bag",
     price: 960,
     oldPrice: 1160,
@@ -20,6 +23,7 @@ const products = [
     reviews: 65,
   },
   {
+    id: "3",
     name: "RGB liquid CPU Cooler",
     price: 160,
     oldPrice: 170,
@@ -28,6 +32,7 @@ const products = [
     reviews: 65,
   },
   {
+    id: "4",
     name: "Small BookSelf",
     price: 360,
     image: "/produtos/estante.png",
@@ -52,10 +57,11 @@ export function BestSelling() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {products.map((product, i) => (
-          <div
-            key={i}
-            className="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative group overflow-hidden hover:shadow-md transition"
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            href={`/produto/${product.id}`}
+            className="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative group overflow-hidden hover:shadow-md transition block"
           >
             <div className="absolute top-3 right-3 flex gap-2">
               <Heart
@@ -107,7 +113,7 @@ export function BestSelling() {
               ))}
               <span className="text-gray-500 ml-2">({product.reviews})</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

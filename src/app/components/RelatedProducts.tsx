@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, Eye, Star } from "lucide-react";
 
 type RelatedProduct = {
+  id: string;
   name: string;
   image: string;
   price: number;
@@ -14,6 +16,7 @@ type RelatedProduct = {
 
 const relatedProducts: RelatedProduct[] = [
   {
+    id: "1",
     name: "HAVIT HV-G92 Gamepad",
     image: "/produtos/controle.png",
     price: 120,
@@ -23,6 +26,7 @@ const relatedProducts: RelatedProduct[] = [
     reviews: 88,
   },
   {
+    id: "2",
     name: "AK-900 Wired Keyboard",
     image: "/produtos/teclado.png",
     price: 960,
@@ -32,6 +36,7 @@ const relatedProducts: RelatedProduct[] = [
     reviews: 75,
   },
   {
+    id: "3",
     name: "IPS LCD Gaming Monitor",
     image: "/produtos/monitor.png",
     price: 370,
@@ -41,6 +46,7 @@ const relatedProducts: RelatedProduct[] = [
     reviews: 99,
   },
   {
+    id: "4",
     name: "RGB Liquid CPU Cooler",
     image: "/produtos/cooler.png",
     price: 160,
@@ -59,10 +65,11 @@ export default function RelatedProducts() {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {relatedProducts.map((product, i) => (
-          <div
-            key={i}
-            className="group relative bg-gray-50 p-5 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden"
+        {relatedProducts.map((product) => (
+          <Link
+            key={product.id}
+            href={`/produto/${product.id}`}
+            className="group relative bg-gray-50 p-5 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden block"
           >
             <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
               -{product.discount}%
@@ -112,9 +119,9 @@ export default function RelatedProducts() {
                   stroke="currentColor"
                 />
               ))}
-              <span className="text-gray-500 ml-2">({product.reviews})</span>
-            </div>
+            <span className="text-gray-500 ml-2">({product.reviews})</span>
           </div>
+        </Link>
         ))}
       </div>
     </section>
