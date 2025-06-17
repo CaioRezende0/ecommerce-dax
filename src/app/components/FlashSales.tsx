@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Heart, Eye, Star } from "lucide-react";
 
 type Product = {
+  id: string;
   name: string;
   price: number;
   oldPrice: number;
@@ -15,6 +17,7 @@ type Product = {
 
 const products: Product[] = [
   {
+    id: "1",
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
     oldPrice: 160,
@@ -24,6 +27,7 @@ const products: Product[] = [
     reviews: 88,
   },
   {
+    id: "2",
     name: "AK-900 Wired Keyboard",
     price: 960,
     oldPrice: 1160,
@@ -33,6 +37,7 @@ const products: Product[] = [
     reviews: 75,
   },
   {
+    id: "3",
     name: "IPS LCD Gaming Monitor",
     price: 370,
     oldPrice: 400,
@@ -42,6 +47,7 @@ const products: Product[] = [
     reviews: 99,
   },
   {
+    id: "4",
     name: "S-Series Comfort Chair",
     price: 375,
     oldPrice: 400,
@@ -105,10 +111,11 @@ export function FlashSales() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, i) => (
-          <div
-            key={i}
-            className="group relative bg-gray-50 p-5 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden"
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            href={`/produto/${product.id}`}
+            className="group relative bg-gray-50 p-5 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden block"
           >
             <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
               -{product.discount}%
@@ -160,7 +167,7 @@ export function FlashSales() {
               ))}
               <span className="text-gray-500 ml-2">({product.reviews})</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
